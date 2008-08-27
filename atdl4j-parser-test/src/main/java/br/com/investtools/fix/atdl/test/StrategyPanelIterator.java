@@ -77,7 +77,7 @@ public class StrategyPanelIterator implements Iterator<Object> {
 				Node panelNode = panel.getStrategyPanelArray(panelIndex)
 						.getDomNode();
 				if (panelNode != null && panelNode.equals(node)) {
-					// return it and goes to the next parameter
+					// return it and goes to the next panel
 					ret = panel.getStrategyPanelArray(panelIndex);
 					panelIndex++;
 				}
