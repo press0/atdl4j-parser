@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-layout-v2.4.7.xsd" xmlns:cor="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-core-v2.4.7.xsd" targetNamespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-layout-v2.4.7.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:import namespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-core-v2.4.7.xsd" schemaLocation="ATDL-core-v2.4.7.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-layout-v2.4.9.xsd" xmlns:cor="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-core-v2.4.9.xsd" targetNamespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-layout-v2.4.9.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-core-v2.4.9.xsd" schemaLocation="ATDL-core-v2.4.9.xsd"/>
 	<!-- Internal Name: ATDL-valid -->
 	<!-- Please email any revisions to the Steward of the Master Model & Mapping artifacts at algotech@fixprotocol.org-->
 	<!-- Please note - Revision history is at the end of this xsd -->
@@ -59,24 +59,51 @@ The intent of the UI sub-schema is to provide an easy, platform-neutral way to s
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="Clock"/>
 			<xs:enumeration value="TextField"/>
-			<xs:enumeration value="MultiCheckBox"/>
+			<xs:enumeration value="SingleSelectList"/>
+			<xs:enumeration value="MultiSelectList"/>
 			<xs:enumeration value="Slider"/>
 			<xs:enumeration value="CheckBox"/>
-			<xs:enumeration value="ComboBox"/>
-			<xs:enumeration value="RadioButton"/>
-			<xs:enumeration value="ClockPanel"/>
 			<xs:enumeration value="SingleSpinner"/>
 			<xs:enumeration value="DualSpinner"/>
-			<xs:enumeration value="Label"/>
-			<xs:enumeration value="EditableComboBox"/>
+			<xs:enumeration value="ListBox">
+				<xs:annotation>
+					<xs:documentation>More specific derivation of a SingleSelectList. Items are presented to the user in a list box.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DropDownList">
+				<xs:annotation>
+					<xs:documentation>More specific derivation of a SingleSelectList. Eg. a combo box.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="EditableDropDownList">
+				<xs:annotation>
+					<xs:documentation>More specific derivation of a SingleSelectList. Eg. a combo box.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RadioButtonList">
+				<xs:annotation>
+					<xs:documentation>More specific derivation of a SingleSelectList. Items are presented with an associated radio button.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MultiSelectListBox">
+				<xs:annotation>
+					<xs:documentation>More specific derivation of a MulitSelectList. Eg. a list box where multiple selection are allowed.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CheckBoxList">
+				<xs:annotation>
+					<xs:documentation>More specific derivation of a MultiSelectList. Items are presented with associated check boxes where more than one can be selected.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>
 <!-- Please email any revisions to the Steward of the Master Model & Mapping artifacts at algotech@fixprotocol.org -->
 <!-- Revision History -->
 <!-- Date Version Author Comments
-Original Author - Greg Malatestinic with input from Rick Labs, Zoltan Feledy, Jim Arlet, et al
+Authors - Greg Malatestinic, Rick Labs, Zoltan Feledy, Jim Arlet, Gideon Kaplan, Martin Naughton and other members of FPL Algo Trading WG.
 	-if there is anyone else then please speak up :-)
 30jan08 v2.5 by Robert Golan for uris, revision history, and version stamping.
-10Mar08 Reverting to previous version naming. This is now version 2.4.3.
+10Mar08 - Reverting to previous version naming. This is now version 2.4.3.
+27Aug08 - Control Types have been reviewed and cleaned up.
 -->

@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-flow-v2.4.7.xsd" xmlns:val="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-valid-v2.4.7.xsd" targetNamespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-flow-v2.4.7.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:import namespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-valid-v2.4.7.xsd" schemaLocation="ATDL-valid-v2.4.7.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-flow-v2.4.9.xsd" xmlns:val="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-valid-v2.4.9.xsd" targetNamespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-flow-v2.4.9.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-valid-v2.4.9.xsd" schemaLocation="ATDL-valid-v2.4.9.xsd"/>
 	<!-- Internal Name: ATDL-flow -->
 	<!-- Please email any revisions to the Steward of the Master Model & Mapping artifacts at algotech@fixprotocol.org-->
 	<!-- Please note - Revision history is at the end of this xsd -->
 	<xs:element name="stateGroup">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="field" minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="targetParameter" minOccurs="0" maxOccurs="unbounded">
 					<xs:complexType>
 						<xs:choice>
 							<xs:element ref="val:edit"/>
 							<xs:element name="editRef" type="val:editRef_t"/>
 						</xs:choice>
 						<xs:attribute name="name" type="xs:string" use="required"/>
-						<xs:attribute name="behavior" type="behavior_t" use="optional"/>
 						<xs:attribute name="enabled" type="xs:boolean" use="optional"/>
 						<xs:attribute name="visible" type="xs:boolean" use="optional"/>
+						<xs:attribute name="value" type="xs:string" use="optional">
+							<xs:annotation>
+								<xs:documentation>
+									Parameter should be set to this value when edit condition is true. Although the type of this attribute has been listed as string, ultimately
+									the type of this attribute must be compatable with the type of the parameter.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="enumItem" minOccurs="0" maxOccurs="unbounded">
@@ -27,7 +34,6 @@
 						</xs:choice>
 						<xs:attribute name="parameterName" type="xs:string" use="required"/>
 						<xs:attribute name="enumIndex" type="xs:nonNegativeInteger" use="required"/>
-						<xs:attribute name="behavior" type="behavior_t" use="optional"/>
 						<xs:attribute name="enabled" type="xs:boolean" use="optional"/>
 						<xs:attribute name="visible" type="xs:boolean" use="optional"/>
 					</xs:complexType>
@@ -41,26 +47,28 @@
 				<xs:element ref="val:edit"/>
 				<xs:element ref="val:editRef"/>
 			</xs:choice>
-			<xs:attribute name="behavior" type="behavior_t" use="optional"/>
 			<xs:attribute name="enabled" type="xs:boolean" use="optional"/>
 			<xs:attribute name="visible" type="xs:boolean" use="optional"/>
+			<xs:attribute name="value" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+						Parameter should be set to this value when edit condition is true. Although the type of this attribute has been listed as string, ultimately
+						the type of this attribute must be compatable with the type of the parameter.
+					</xs:documentation>
+				</xs:annotation>
+				<!-- maybe we should use "newValue" -->
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<xs:simpleType name="behavior_t">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="enable"/>
-			<xs:enumeration value="disable"/>
-			<xs:enumeration value="hide"/>
-			<xs:enumeration value="unhide"/>
-		</xs:restriction>
-	</xs:simpleType>
 </xs:schema>
 <!-- Please email any revisions to the Steward of the Master Model & Mapping artifacts at algotech@fixprotocol.org -->
 <!-- Revision History -->
 <!-- Date Version Author Comments
-Original Author - Greg Malatestinic with input from Rick Labs, Zoltan Feledy, Jim Arlet, et al
+Authors - Greg Malatestinic, Rick Labs, Zoltan Feledy, Jim Arlet, Gideon Kaplan, Martin Naughton and other members of FPL Algo Trading WG.
 	-if there is anyone else then please speak up :-)
 30jan08 v2.5 by Robert Golan for uris, revision history, and version stamping.
 20May2008 -<edit> elements max and min occurs is now 1
 27May2008 -stateGroup and stateRule can now refer to editRef.
+30Aug2008 -value attribute has been added.
+17Sep2008 -stateGroup.filed changed to stateGroup.targetParameter.
 -->

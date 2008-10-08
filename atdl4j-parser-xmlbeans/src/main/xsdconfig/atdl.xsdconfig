@@ -2,19 +2,19 @@
 <xb:config
 	xmlns:xb="http://xml.apache.org/xmlbeans/2004/02/xbean/config">
 	<xb:namespace
-		uri="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-core-v2.4.7.xsd">
+		uri="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-core-v2.4.9.xsd">
 		<xb:package>br.com.investtools.fix.atdl.core.xmlbeans</xb:package>
 	</xb:namespace>
 	<xb:namespace
-		uri="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-flow-v2.4.7.xsd">
+		uri="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-flow-v2.4.9.xsd">
 		<xb:package>br.com.investtools.fix.atdl.flow.xmlbeans</xb:package>
 	</xb:namespace>
 	<xb:namespace
-		uri="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-layout-v2.4.7.xsd">
+		uri="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-layout-v2.4.9.xsd">
 		<xb:package>br.com.investtools.fix.atdl.layout.xmlbeans</xb:package>
 	</xb:namespace>
 	<xb:namespace
-		uri="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-valid-v2.4.7.xsd">
+		uri="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-valid-v2.4.9.xsd">
 		<xb:package>br.com.investtools.fix.atdl.valid.xmlbeans</xb:package>
 	</xb:namespace>
 </xb:config>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-valid-v2.4.7.xsd" targetNamespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-valid-v2.4.7.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-valid-v2.4.9.xsd" targetNamespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-valid-v2.4.9.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<!-- Internal Name: ATDL-valid -->
 	<!-- Please email any revisions to the Steward of the Master Model & Mapping artifacts at algotech@fixprotocol.org-->
 	<!-- Please note - Revision history is at the end of this xsd -->
@@ -100,7 +100,7 @@ AND, OR, XOR, NOT. Mutually exclusive with operator. Advanced logic operators ar
 <!-- Please email any revisions to the Steward of the Master Model & Mapping artifacts at algotech@fixprotocol.org -->
 <!-- Revision History -->
 <!-- Date Version Author Comments
-Original Author - Greg Malatestinic with input from Rick Labs, Zoltan Feledy, Jim Arlet, et al
+Authors - Greg Malatestinic, Rick Labs, Zoltan Feledy, Jim Arlet, Gideon Kaplan, Martin Naughton and other members of FPL Algo Trading WG.
 	-if there is anyone else then please speak up :-)
 30jan08 v2.5 by Robert Golan for uris, revision history, and version stamping.
 14May08 by Greg Malatestinic

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-core-v2.4.7.xsd" xmlns:val="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-valid-v2.4.7.xsd" xmlns:lay="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-layout-v2.4.7.xsd" xmlns:flow="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-flow-v2.4.7.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fm="http://www.fixprotocol.org/FIXML-5-0/METADATA" xmlns:FIXML50="http://www.fixprotocol.org/FIXML-5-0" targetNamespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-core-v2.4.7.xsd" elementFormDefault="qualified" version="2.4.7">
-	<xs:import namespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-layout-v2.4.7.xsd" schemaLocation="ATDL-layout-v2.4.7.xsd"/>
-	<xs:import namespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-valid-v2.4.7.xsd" schemaLocation="ATDL-valid-v2.4.7.xsd"/>
-	<xs:import namespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-flow-v2.4.7.xsd" schemaLocation="ATDL-flow-v2.4.7.xsd"/>
+<xs:schema xmlns="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-core-v2.4.9.xsd" xmlns:val="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-valid-v2.4.9.xsd" xmlns:lay="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-layout-v2.4.9.xsd" xmlns:flow="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-flow-v2.4.9.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fm="http://www.fixprotocol.org/FIXML-5-0/METADATA" xmlns:FIXML50="http://www.fixprotocol.org/FIXML-5-0" targetNamespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-core-v2.4.9.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.4.9">
+	<xs:import namespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-layout-v2.4.9.xsd" schemaLocation="ATDL-layout-v2.4.9.xsd"/>
+	<xs:import namespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-valid-v2.4.9.xsd" schemaLocation="ATDL-valid-v2.4.9.xsd"/>
+	<xs:import namespace="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-flow-v2.4.9.xsd" schemaLocation="ATDL-flow-v2.4.9.xsd"/>
 	<!-- Internal Version Name: ATDL-core -->
 	<!-- Please email any revisions to the Steward of the Master Model & Mapping artifacts at algotech@fixprotocol.org-->
 	<!-- Please note - Revision history is at the end of this xsd -->
@@ -25,7 +25,7 @@
 			|
 			+	stateGroup
 
-The schema is broken into a core schema, a user interface sub-schema, and a validation sub-schema. This has been done to allow vendors to support the core schema and to optionally support the sub-schemas.
+The schema is broken into a core schema, a user interface sub-schema, a workflow sub-schema and a validation sub-schema. This has been done to allow vendors to support the core schema and to optionally support the sub-schemas.
 
 The core schema contains attributes and elements that are used to describe the data content of the algorithm and the parameters. A minimal implementation of a dynamically rendered order entry screen would need to support XML documents that adhere to this schema.
 
@@ -47,7 +47,6 @@ The core schema document can be found in the document ATDL-v2-0.xsd.
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="description" minOccurs="0"/>
 				<xs:element ref="val:edit" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="strategy" type="Strategy_t" maxOccurs="unbounded"/>
 			</xs:sequence>
@@ -69,6 +68,16 @@ The core schema document can be found in the document ATDL-v2-0.xsd.
 			<xs:attribute name="changeStrategyOnCxlRpl" type="xs:boolean">
 				<xs:annotation>
 					<xs:documentation>Indicates whether a new strategy can be chosen during a CancelReplace</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="descritpion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description of the providing firm or set of strategies.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="imageLocation" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Filepath or URL of an image file or logo of the algo providing firm.</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 		</xs:complexType>
@@ -94,11 +103,6 @@ The core schema document can be found in the document ATDL-v2-0.xsd.
 				<xs:documentation>Uniquely identifies the strategy or algorithm.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="fixTag" type="xs:positiveInteger">
-			<xs:annotation>
-				<xs:documentation>Marked for deprication. The tag used to identify the algorithm. FIX 4.4 provides tag 847 (TargetStrategy) for this purpose.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
 		<xs:attribute name="uiRep" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The name of the strategy as rendered in the UI. If not provided then the “name” attribute should be used.</xs:documentation>
@@ -112,11 +116,6 @@ The core schema document can be found in the document ATDL-v2-0.xsd.
 		<xs:attribute name="version" type="xs:string" use="required">
 			<xs:annotation>
 				<xs:documentation>Information to facilitate version control.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="applicableMsgTypes" type="MVS_t">
-			<xs:annotation>
-				<xs:documentation>Marked for deprication. Use fixMsgType instead. List of values from FIX tag 35 with space delimiter.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="fixMsgType" type="xs:string">
@@ -144,14 +143,9 @@ The core schema document can be found in the document ATDL-v2-0.xsd.
 				<xs:documentation>URL of a disclosure document supplied by the algorithm provider.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="executionProfileLink" type="xs:anyURI">
+		<xs:attribute name="sentOrderLink" type="xs:anyURI">
 			<xs:annotation>
-				<xs:documentation>URL of a disclosure document supplied by the algorithm provider.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="supportsCxlRpl" type="xs:boolean">
-			<xs:annotation>
-				<xs:documentation>Marked for deprication. Indicates whether or not the strategy accepts Cancel-Replace messages.</xs:documentation>
+				<xs:documentation>Prefix portion of a URL to access the order or draft at the target e.g https://xyz.com/algo/dashboard?SenderCompID= OMS appends to this the specific SenderCompID string, an ampersand "ClOrdID=" and the specific CLOrdID-string. Trader hits this full URL to communicate regarding the order or draft.  See additional documentation.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="providerID" type="xs:string">
@@ -164,16 +158,9 @@ The core schema document can be found in the document ATDL-v2-0.xsd.
 				<xs:documentation>A further level of firm identification.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="algoExtModel" type="MVS_t">
+		<xs:attribute name="imageLocation" type="xs:string">
 			<xs:annotation>
-				<xs:documentation>Marked for deprication. List of the extension models supported as described by Algorithmic Trading Proposed Extensions v1.0</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="embedFixTag" type="xs:positiveInteger">
-			<xs:annotation>
-				<xs:documentation>Marked for deprecation. FIX tag where all parameter names and values are to be stored when sending an algorithmic order. Applicable only to the Embedded extension model.
-Required when algoExtModel is Embedded. 
-</xs:documentation>
+				<xs:documentation>Filepath or URL of an image file or logo of this particular strategy.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="totalLegs" type="xs:nonNegativeInteger" use="optional">
@@ -209,7 +196,7 @@ Required when algoExtModel is Embedded.
 					<xs:documentation> Help text for the parameter </xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element ref="flow:stateRule" minOccurs="0"/>
+			<xs:element ref="flow:stateRule" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="name" use="required">
 			<xs:annotation>
@@ -262,7 +249,7 @@ Required when algoExtModel is Custom</xs:documentation>
 				<xs:documentation>Indicates how to interpret those tags that were populated in an original order but are not populated in a subsequent cancel/replace of the order message.If this value is true then revert to the value of the original order, otherwise a null value or default value is to be used.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="definedByFIX" type="xs:boolean">
+		<xs:attribute name="definedByFIX" type="xs:boolean" default="false">
 			<xs:annotation>
 				<xs:documentation>Indication of whether the parameter is a redefinition of a standard FIX tag.</xs:documentation>
 			</xs:annotation>
@@ -286,7 +273,7 @@ Required when algoExtModel is Custom</xs:documentation>
 	</xs:complexType>
 	<xs:complexType name="enumPair_t">
 		<xs:sequence>
-			<xs:element ref="flow:stateRule" minOccurs="0"/>
+			<xs:element ref="flow:stateRule" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="uiRep" type="xs:string" use="required">
 			<xs:annotation>
@@ -315,42 +302,8 @@ Required when algoExtModel is Custom</xs:documentation>
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
-	<xs:element name="constTag">
-		<xs:annotation>
-			<xs:documentation> constants in the strategy </xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="fixTag" type="xs:positiveInteger" use="required"/>
-			<xs:attribute name="wireValue" type="xs:string" use="required">
-				<xs:annotation>
-					<xs:documentation>The value with which to set the tag.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="overrideUserInput" type="xs:boolean" use="required">
-				<xs:annotation>
-					<xs:documentation>If true, the tag is set to this value regardless of what is entered by the user.
-Cannot be true if appendToUserInput is also true
-</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="appendUserInput" type="xs:boolean" use="required">
-				<xs:annotation>
-					<xs:documentation>If true, this value is appended to the value of the tag. The primary motivation for this attribute is to allow values to be added to tags of type mutilpleValueString such as tag 18.  Cannot be true if overrideUserInput is also true. Used only for MultipleValueString tags.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-		</xs:complexType>
-	</xs:element>
 	<!-- Start of the AlgolT Types(Complex/Simple) -->
 	<!-- ************************************************************************************************************************** -->
-	<xs:simpleType name="algoExtModel_t">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="Recommended"/>
-			<xs:enumeration value="Alternative1"/>
-			<xs:enumeration value="Alternative2"/>
-			<xs:enumeration value="Alternative3"/>
-			<xs:enumeration value="Custom"/>
-		</xs:restriction>
-	</xs:simpleType>
 	<!-- parameter type Amt -->
 	<xs:complexType name="Amt_t">
 		<xs:complexContent>
@@ -366,6 +319,8 @@ Cannot be true if appendToUserInput is also true
 		<xs:complexContent>
 			<xs:extension base="Parameter_t">
 				<xs:attribute name="initValue" type="Boolean"/>
+				<xs:attribute name="trueWireValue" type="xs:string"/>
+				<xs:attribute name="falseWireValue" type="xs:string"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -456,8 +411,10 @@ Cannot be true if appendToUserInput is also true
 	<xs:complexType name="MultipleCharValue_t">
 		<xs:complexContent>
 			<xs:extension base="Parameter_t">
+				<xs:attribute name="initValue" type="MultipleCharValue"/>
 				<xs:attribute name="minLength" type="Length" default="0"/>
 				<xs:attribute name="maxLength" type="Length"/>
+				<xs:attribute name="invertOnWire" type="xs:boolean" default="false"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -468,6 +425,7 @@ Cannot be true if appendToUserInput is also true
 				<xs:attribute name="initValue" type="MultipleStringValue"/>
 				<xs:attribute name="minLength" type="Length"/>
 				<xs:attribute name="maxLength" type="Length"/>
+				<xs:attribute name="invertOnWire" type="xs:boolean" default="false"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -610,9 +568,14 @@ Cannot be true if appendToUserInput is also true
 		<xs:complexContent>
 			<xs:extension base="Parameter_t">
 				<xs:attribute name="initValue" type="LocalMktTime"/>
+				<xs:attribute name="initWithCurrentWhenLater" type="xs:boolean" default="true"/>
 				<xs:attribute name="minValue" type="LocalMktTime"/>
 				<xs:attribute name="maxValue" type="LocalMktTime"/>
-				<xs:attribute name="localMktTz" type="xs:string"/>
+				<xs:attribute name="localMktTz" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Tome zone ID of the local market in area/city format. Eg. Americas/New_York</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -677,6 +640,14 @@ Cannot be true if appendToUserInput is also true
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:pattern value=".+(\s.+)*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MultipleCharValue">
+		<xs:annotation>
+			<xs:documentation>String field containing one or more space delimited values.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value=".?(\s.?)*"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="Percentage">
@@ -809,7 +780,7 @@ Leap Seconds:  Note that UTC includes corrections for leap seconds, which are in
 <!-- Please email any revisions to the Steward of the Master Model & Mapping artifacts at algotech@fixprotocol.org -->
 <!-- Revision History -->
 <!-- Date Version Author Comments
-Original Author - Greg Malatestinic with input from Rick Labs, Zoltan Feledy, Jim Arlet, et al
+Authors - Greg Malatestinic, Rick Labs, Zoltan Feledy, Jim Arlet, Gideon Kaplan, Martin Naughton and other members of FPL Algo Trading WG.
 	-if there is anyone else then please speak up :-)
 12apr07 v1-8-1-S by Robert Golan for additional annotations, slimming, revision history, and version stamping.
 			-moved in StrategyParameterType_enum_t
@@ -905,4 +876,11 @@ Original Author - Greg Malatestinic with input from Rick Labs, Zoltan Feledy, Ji
 			-added edit element at strategies level. Now named edits can be re-used across strategies.
 			-added editRef to edit element.
 			-added executionProfileLink
+27Jul08 v2.4.8 by Greg Malatestinic
+			-added boolean attribute invertOnWire to MultipleCharValue_t and MultipleStringValue_t types
+			-added type MultipleCharValue. It was overlooked.
+			-added trueWireValue and falseWireValue to Boolean_t definition.
+23Sep08 v2.4.9 by Greg Malatestinic
+			-added boolean attribute, initWithCuurentWhenLater, added to UTCTimeStamp_t type.
+
 -->
