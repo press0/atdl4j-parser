@@ -1,3 +1,16 @@
+.project
+.settings
+atdl4j-parser-jaxb/.classpath
+atdl4j-parser-jaxb/.project
+atdl4j-parser-jaxb/.settings
 atdl4j-parser-jaxb/target
+atdl4j-parser-test/.classpath
+atdl4j-parser-test/.project
+atdl4j-parser-test/.settings
 atdl4j-parser-test/target
+atdl4j-parser-xmlbeans/.classpath
+atdl4j-parser-xmlbeans/.project
+atdl4j-parser-xmlbeans/.settings
 atdl4j-parser-xmlbeans/target
+target
+
