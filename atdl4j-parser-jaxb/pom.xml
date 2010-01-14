@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>br.com.investtools.fix.atdl</groupId>
+		<groupId>org.atdl4j</groupId>
 		<artifactId>atdl4j-parser</artifactId>
 		<version>1.1-beta-2.4.10-SNAPSHOT</version>
 	</parent>
-	<groupId>br.com.investtools.fix.atdl</groupId>
+	<groupId>org.atdl4j</groupId>
 	<artifactId>atdl4j-parser-jaxb</artifactId>
 	<packaging>jar</packaging>
 	<name>atdl4j-parser-jaxb</name>
