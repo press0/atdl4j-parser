@@ -43,8 +43,8 @@
 		<module>atdl4j-parser-test</module>
 	</modules>
 	<scm>
-		<connection>scm:git:git@github.com:tuler/atdl4j-parser.git</connection>
-		<url>scm:git:git@github.com:tuler/atdl4j-parser.git</url>
+		<connection>scm:git:git://github.com/tuler/atdl4j-parser.git</connection>
+		<url>http://github.com/tuler/atdl4j-parser</url>
 		<developerConnection>scm:git:git@github.com:tuler/atdl4j-parser.git</developerConnection>
 	</scm>
 	<distributionManagement>
