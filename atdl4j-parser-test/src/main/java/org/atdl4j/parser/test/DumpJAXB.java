@@ -1,4 +1,4 @@
-package br.com.investtools.fix.atdl.test;
+package org.atdl4j.parser.test;
 
 import java.io.File;
 import java.io.FileInputStream;
