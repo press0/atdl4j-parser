@@ -2,19 +2,27 @@
 <xb:config
 	xmlns:xb="http://xml.apache.org/xmlbeans/2004/02/xbean/config">
 	<xb:namespace
-		uri="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-core-v2.4.9.xsd">
-		<xb:package>br.com.investtools.fix.atdl.core.xmlbeans</xb:package>
+		uri="http://www.fixprotocol.org/ATDL-1-1/Core">
+		<xb:package>org.atdl4j.atdl.xmlbeans.core</xb:package>
 	</xb:namespace>
 	<xb:namespace
-		uri="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-flow-v2.4.9.xsd">
-		<xb:package>br.com.investtools.fix.atdl.flow.xmlbeans</xb:package>
+		uri="http://www.fixprotocol.org/ATDL-1-1/Flow">
+		<xb:package>org.atdl4j.atdl.xmlbeans.flow</xb:package>
 	</xb:namespace>
 	<xb:namespace
-		uri="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-layout-v2.4.9.xsd">
-		<xb:package>br.com.investtools.fix.atdl.layout.xmlbeans</xb:package>
+		uri="http://www.fixprotocol.org/ATDL-1-1/Layout">
+		<xb:package>org.atdl4j.atdl.xmlbeans.layout</xb:package>
 	</xb:namespace>
 	<xb:namespace
-		uri="http://www.fixprotocol.org/working_groups/algowg/documents/ATDL-valid-v2.4.9.xsd">
-		<xb:package>br.com.investtools.fix.atdl.valid.xmlbeans</xb:package>
+		uri="http://www.fixprotocol.org/ATDL-1-1/Regions">
+		<xb:package>org.atdl4j.atdl.xmlbeans.regions</xb:package>
+	</xb:namespace>
+	<xb:namespace
+		uri="http://www.fixprotocol.org/ATDL-1-1/Timezones">
+		<xb:package>org.atdl4j.atdl.xmlbeans.timezones</xb:package>
+	</xb:namespace>
+	<xb:namespace
+		uri="http://www.fixprotocol.org/ATDL-1-1/Validation">
+		<xb:package>org.atdl4j.atdl.xmlbeans.validation</xb:package>
 	</xb:namespace>
 </xb:config>

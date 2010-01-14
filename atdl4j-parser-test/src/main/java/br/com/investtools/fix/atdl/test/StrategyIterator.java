@@ -2,9 +2,8 @@ package br.com.investtools.fix.atdl.test;
 
 import java.util.Iterator;
 
+import org.atdl4j.atdl.xmlbeans.core.StrategyT;
 import org.w3c.dom.Node;
-
-import br.com.investtools.fix.atdl.core.xmlbeans.StrategyT;
 
 /**
  * A StrategyT node can have ParameterT's and StrategyLayout as children. Using

@@ -2,9 +2,8 @@ package br.com.investtools.fix.atdl.test;
 
 import java.util.Iterator;
 
+import org.atdl4j.atdl.xmlbeans.layout.StrategyPanelT;
 import org.w3c.dom.Node;
-
-import br.com.investtools.fix.atdl.layout.xmlbeans.StrategyPanelDocument.StrategyPanel;
 
 /**
  * A StrategyPanel node can have ParameterT's and StrategyPanel as children.
@@ -28,7 +27,7 @@ import br.com.investtools.fix.atdl.layout.xmlbeans.StrategyPanelDocument.Strateg
  */
 public class StrategyPanelIterator implements Iterator<Object> {
 
-	private StrategyPanel panel;
+	private StrategyPanelT panel;
 
 	private int i;
 
@@ -36,7 +35,7 @@ public class StrategyPanelIterator implements Iterator<Object> {
 
 	private int panelIndex;
 
-	public StrategyPanelIterator(StrategyPanel panel) {
+	public StrategyPanelIterator(StrategyPanelT panel) {
 		this.panel = panel;
 		this.i = 0;
 		this.paramIndex = 0;
@@ -62,12 +61,12 @@ public class StrategyPanelIterator implements Iterator<Object> {
 			Node node = panel.getDomNode().getChildNodes().item(i);
 
 			// se if it matches with current parameter node
-			if (panel.getParameterArray().length > paramIndex) {
-				Node parameterNode = panel.getParameterArray(paramIndex)
+			if (panel.getControlArray().length > paramIndex) {
+				Node parameterNode = panel.getControlArray(paramIndex)
 						.getDomNode();
 				if (parameterNode != null && parameterNode.equals(node)) {
 					// return it and goes to the next parameter
-					ret = panel.getParameterArray(paramIndex);
+					ret = panel.getControlArray(paramIndex);
 					paramIndex++;
 				}
 			}

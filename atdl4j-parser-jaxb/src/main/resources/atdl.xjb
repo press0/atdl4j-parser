@@ -1,29 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jaxb:bindings jaxb:version="2.0"
-	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	<jaxb:bindings schemaLocation="ATDL-core-v2.4.9.xsd"
+<jaxb:bindings xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+           xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+           jaxb:extensionBindingPrefixes="xjc"
+           jaxb:version="2.1">
+	<jaxb:bindings schemaLocation="atdl-core-1-1.xsd"
 		node="/xs:schema">
 		<jaxb:schemaBindings>
-			<jaxb:package name="br.com.investtools.fix.atdl.core.jaxb" />
+			<jaxb:package name="org.atdl4j.atdl.core" />
 		</jaxb:schemaBindings>
 	</jaxb:bindings>
-	<jaxb:bindings schemaLocation="ATDL-flow-v2.4.9.xsd"
+	<jaxb:bindings schemaLocation="atdl-flow-1-1.xsd"
 		node="/xs:schema">
 		<jaxb:schemaBindings>
-			<jaxb:package name="br.com.investtools.fix.atdl.flow.jaxb" />
+			<jaxb:package name="org.atdl4j.atdl.flow" />
 		</jaxb:schemaBindings>
 	</jaxb:bindings>
-	<jaxb:bindings schemaLocation="ATDL-layout-v2.4.9.xsd"
+	<jaxb:bindings schemaLocation="atdl-layout-1-1.xsd"
 		node="/xs:schema">
 		<jaxb:schemaBindings>
-			<jaxb:package name="br.com.investtools.fix.atdl.layout.jaxb" />
+			<jaxb:package name="org.atdl4j.atdl.layout" />
 		</jaxb:schemaBindings>
 	</jaxb:bindings>
-	<jaxb:bindings schemaLocation="ATDL-valid-v2.4.9.xsd"
+	<jaxb:bindings schemaLocation="atdl-validation-1-1.xsd"
 		node="/xs:schema">
 		<jaxb:schemaBindings>
-			<jaxb:package name="br.com.investtools.fix.atdl.valid.jaxb" />
+			<jaxb:package name="org.atdl4j.atdl.validation" />
 		</jaxb:schemaBindings>
+	</jaxb:bindings>
+	<jaxb:bindings schemaLocation="atdl-regions-1-1.xsd"
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="org.atdl4j.atdl.regions" />
+		</jaxb:schemaBindings>
+		<jaxb:bindings node="./xs:element[@name='TheAmericas']/xs:simpleType">
+			<jaxb:typesafeEnumClass name="TheAmericas" />
+		</jaxb:bindings>
+		<jaxb:bindings node="./xs:element[@name='EuropeMiddleEastAfrica']/xs:simpleType">
+			<jaxb:typesafeEnumClass name="EuropeMiddleEastAfrica" />
+		</jaxb:bindings>
+		<jaxb:bindings node="./xs:element[@name='AsiaPacificJapan']/xs:simpleType">
+			<jaxb:typesafeEnumClass name="AsiaPacificJapan" />
+		</jaxb:bindings>
+	</jaxb:bindings>
+	<jaxb:bindings schemaLocation="atdl-timezones-1-1.xsd"
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="org.atdl4j.atdl.timezones" />
+		</jaxb:schemaBindings>
+		<jaxb:bindings node="./xs:simpleType[@name='LocalMktTz_t']">
+			<jaxb:typesafeEnumClass name="Timezone" />
+		</jaxb:bindings>
 	</jaxb:bindings>
 </jaxb:bindings>
